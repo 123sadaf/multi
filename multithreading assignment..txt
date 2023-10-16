@@ -1,0 +1,261 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cc3574d3-1ab5-4e76-aef7-6a6281e9f4fe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q1.what is multithreading in python? why is it used? Name the module used to handle threads in python."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "908c6343-ad65-40f5-aceb-bc4f098d56c3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Multithreading is defined as the ability of a processor to execute multiple threads concurrently.\n",
+    "# In a simple, single core CPU , it is achieved using frequent switching between threads.\n",
+    "# Multithreading is used to do multiprogramming at a time.\n",
+    "# A module named 'threading' is used to handle threads in python by just import threading. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "00dcadd9-6b81-4474-bf2e-2c3308c4dba4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q2.why threading module used? rite the use of the following functions:\n",
+    "    1. activeCount()\n",
+    "    2.current Thread()\n",
+    "    3.enumerate()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "83acc159-05b3-4557-941c-c302028dc294",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Threading is used to do multitasking at a time .\n",
+    "# 1. active count ()\n",
+    "# the threading .active_count () is a inbuilt method of the threading module \n",
+    "# it is used to return the number of Thread objects that are active at any instant .\n",
+    "\n",
+    "# 2.current Thread()\n",
+    "# current Thread() is use to determine the number of thread objects in the celler,s threads control.\n",
+    "\n",
+    "# 3.enumerate() it will give you complete list of thread objects that are currently active .\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1792974d-ac73-40d2-b950-283cc5d0f4d8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q3. Explain the following functions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6967e234-ae82-41d1-9ed9-34b09f6cff6f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "1. run()\n",
+    "2. start()\n",
+    "3. join()\n",
+    "4. isAlive()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6dea7a32-7f75-4728-bf4e-7ac8600a4cbf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#1.run(): It is the entry point function for any thread. It act as an entry .\n",
+    "#2.start(): It is used for starting the thread by calling the run().\n",
+    "#3.join(): The join() method enables to programto wait for threads to terminate.\n",
+    "#4.isAlive(): isAlive()methods verifies on active thread (verify wheatjer the program  still executing or not )."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "aa5ccf94-2033-47e6-9fdb-f3ea064ebbec",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q4. rite a python program to create two threads. Thread one must print the list of squares and thread\n",
+    "two must print the list of cubes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "f4be5fa8-0b4f-488a-b297-20be4d38e499",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import threading \n",
+    "th=[]\n",
+    "def squares():\n",
+    "    for i in range(1,6):\n",
+    "        print (f\"Square of {i} is {i**2}\")\n",
+    "        \n",
+    "def cubes():\n",
+    "    for i in range (1,6):\n",
+    "         print (f\"Cube of {i} is {i**3}\")\n",
+    "        "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "a2550c4d-fd36-4444-a504-235b12a1e6d9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "thread1 = threading.Thread(target = squares)\n",
+    "thread2 =  threading.Thread(target = cubes)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "68143303-ab18-4b0d-99c8-e7e7203b53a9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Square of 1 is 1\n",
+      "Square of 2 is 4\n",
+      "Square of 3 is 9\n",
+      "Square of 4 is 16\n",
+      "Square of 5 is 25\n",
+      "Cube of 1 is 1\n",
+      "Cube of 2 is 8\n",
+      "Cube of 3 is 27\n",
+      "Cube of 4 is 64\n",
+      "Cube of 5 is 125\n"
+     ]
+    }
+   ],
+   "source": [
+    "thread1.start()\n",
+    "thread2.start()\n",
+    "thread1.join()\n",
+    "thread2.join()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "45126b6d-fb27-4004-9fcb-8f835c0af8ae",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q5. State advantages and disadvantages of multithreading"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "62759958-edfb-4afe-bc10-75b350655b8a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Advantages\n",
+    "# Multithreading can significantly improve the speed of computation because each processor or core handles a separate thread concurrently.\n",
+    "# Multithreading allows a program to remain the responsive while one thread waits for input\n",
+    "# All the threads of a process have access to its global variables. If a global variable changes in one thread, it is visible to other thread as well.\n",
+    "# A thread can also have its own local variables.\n",
+    "\n",
+    "#Disadvantages\n",
+    "#On a single processor system, multithreading won't hit the speed of computation.\n",
+    "#The performance may downgrade due to the overhead of managing threads.\n",
+    "#The comlexity increases with the increase in the number of threads.\n",
+    "#It is difficult to debug the program with threads as the result is sometimes unpredictable."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e4ce976c-5cc5-411b-8db8-821694c4e8c6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Q6. Explain deadlocks and race conditions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e84e1236-bffb-483a-804d-d2234f186eb3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Deadlocks\n",
+    "if two or more process are waiting on happening of some event which never happens then we say these processes core involved in deadliock .\n",
+    "and that state is called deadlock\n",
+    "\n",
+    "#Race and condition\n",
+    "#Race condition is a bug generated when you do multiprocessing . It occurs because two or more thread tries to update the same variable and results\n",
+    "#Into variable output"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c9a48ba6-aee3-4814-93a8-5c2f3092ab12",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "982ac617-c3e8-4447-a125-66720c9dafce",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
